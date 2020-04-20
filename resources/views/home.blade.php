@@ -2,10 +2,10 @@
 @section('content')
 <div class="content">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    Dashboard
+                    Chart Visualization
                 </div>
 
                 <div class="card-body">
@@ -31,6 +31,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-6">
+
         </div>
     </div>
 </div>

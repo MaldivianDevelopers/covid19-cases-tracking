@@ -17,7 +17,7 @@ class HomeController
             'group_by_period'       => 'day',
             'aggregate_function'    => 'count',
             'filter_field'          => 'created_at',
-            'filter_days'           => '90',
+            'filter_days'           => '365',
             'group_by_field_format' => 'Y-m-d',
             'column_class'          => 'col-md-12',
             'entries_number'        => '5',
@@ -33,8 +33,8 @@ class HomeController
             'group_by_field'     => 'nationality',
             'aggregate_function' => 'count',
             'filter_field'       => 'created_at',
-            'filter_days'        => '90',
-            'column_class'       => 'col-md-6',
+            'filter_days'        => '365',
+            'column_class'       => 'col-md-4 mt-5 ml-3 mr-3',
             'entries_number'     => '5',
         ];
 
@@ -48,8 +48,8 @@ class HomeController
             'group_by_field'     => 'location_detected',
             'aggregate_function' => 'count',
             'filter_field'       => 'created_at',
-            'filter_days'        => '90',
-            'column_class'       => 'col-md-6',
+            'filter_days'        => '365',
+            'column_class'       => 'col-md-4 mt-5 ml-3 mr-3',
             'entries_number'     => '5',
         ];
 

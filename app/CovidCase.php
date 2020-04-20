@@ -64,6 +64,12 @@ class CovidCase extends Model
 
     }
 
+
+    public function setNationalityAttribute($value)
+    {
+        $this->attributes['nationality'] = strtoupper($value);
+    }
+
     public function sourceCovidCases()
     {
         return $this->hasMany(CovidCase::class, 'source_id', 'id');

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CovidCase;
+use App\Http\Controllers\Controller;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
-class HomeController
+class HomeController extends Controller
 {
     public function index()
     {
@@ -56,5 +58,17 @@ class HomeController
         $chart3 = new LaravelChart($settings3);
 
         return view('home', compact('chart1', 'chart2', 'chart3'));
+    }
+
+    public function clusterData()
+    {
+
+        $nodes = CovidCase::get(['id','case_identity as name']);
+        $links = CovidCase::whereNotNull('source_id')->get(['id as target', 'source_id as source']);
+
+        return [
+            'nodes' => $nodes,
+            'links' => $links
+        ];
     }
 }

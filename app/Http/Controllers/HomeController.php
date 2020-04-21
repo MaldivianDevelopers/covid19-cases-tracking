@@ -35,7 +35,7 @@ class HomeController extends Controller
             'group_by_field'        => 'date_detected',
             'group_by_period'       => 'day',
             'aggregate_function'    => 'count',
-            'filter_field'          => 'created_at',
+            'filter_field'          => 'date_detected',
             'filter_days'           => '365',
             'group_by_field_format' => 'Y-m-d',
             'column_class'          => 'col',

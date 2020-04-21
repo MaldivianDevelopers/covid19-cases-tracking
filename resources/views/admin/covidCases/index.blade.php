@@ -35,9 +35,9 @@
                         <th>
                             {{ trans('cruds.covidCase.fields.source') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.covidCase.fields.infection_source') }}
-                        </th>
+{{--                        <th>--}}
+{{--                            {{ trans('cruds.covidCase.fields.infection_source') }}--}}
+{{--                        </th>--}}
                         <th>
                             {{ trans('cruds.covidCase.fields.description') }}
                         </th>
@@ -54,11 +54,14 @@
                             {{ trans('cruds.covidCase.fields.location_detected') }}
                         </th>
                         <th>
-                            {{ trans('cruds.covidCase.fields.date_detected') }}
+                            {{ trans('cruds.covidCase.fields.cluster_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.covidCase.fields.symptomatic_date') }}
+                            {{ trans('cruds.covidCase.fields.date_detected') }}
                         </th>
+{{--                        <th>--}}
+{{--                            {{ trans('cruds.covidCase.fields.symptomatic_date') }}--}}
+{{--                        </th>--}}
                         <th>
                             {{ trans('cruds.covidCase.fields.displayed_symptoms') }}
                         </th>
@@ -84,13 +87,17 @@
                             </td>
                             <td>
                                 {{ $covidCase->case_identity ?? '' }}
+
+                                @if($covidCase->critical)
+                                    <span class="badge badge-pill badge-danger" title="{{ trans('cruds.covidCase.fields.critical') }}">!</span>
+                                @endif
                             </td>
                             <td>
                                 {{ $covidCase->source->case_identity ?? '' }}
                             </td>
-                            <td>
-                                {{ App\CovidCase::INFECTION_SOURCE_SELECT[$covidCase->infection_source] ?? '' }}
-                            </td>
+{{--                            <td>--}}
+{{--                                {{ App\CovidCase::INFECTION_SOURCE_SELECT[$covidCase->infection_source] ?? '' }}--}}
+{{--                            </td>--}}
                             <td>
                                 {{ $covidCase->description ?? '' }}
                             </td>
@@ -107,11 +114,14 @@
                                 {{ $covidCase->location_detected ?? '' }}
                             </td>
                             <td>
-                                {{ $covidCase->date_detected ?? '' }}
+                                {{ $covidCase->cluster_name ?? '' }}
                             </td>
                             <td>
-                                {{ $covidCase->symptomatic_date ?? '' }}
+                                {{ $covidCase->date_detected ?? '' }}
                             </td>
+{{--                            <td>--}}
+{{--                                {{ $covidCase->symptomatic_date ?? '' }}--}}
+{{--                            </td>--}}
                             <td>
                                 <span style="display:none">{{ $covidCase->displayed_symptoms ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $covidCase->displayed_symptoms ? 'checked' : '' }}>

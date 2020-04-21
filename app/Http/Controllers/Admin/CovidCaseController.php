@@ -9,6 +9,7 @@ use App\Http\Requests\StoreCovidCaseRequest;
 use App\Http\Requests\UpdateCovidCaseRequest;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 use Symfony\Component\HttpFoundation\Response;
 
 class CovidCaseController extends Controller
@@ -22,18 +23,51 @@ class CovidCaseController extends Controller
         return view('admin.covidCases.index', compact('covidCases'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('covid_case_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $sources = CovidCase::all()->pluck('case_identity', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.covidCases.create', compact('sources'));
+        $bulk_entry = $request->query('bulk', false) == true;
+
+        return view('admin.covidCases.create', compact('sources', 'bulk_entry'));
     }
 
     public function store(StoreCovidCaseRequest $request)
     {
-        $covidCase = CovidCase::create($request->all());
+        if($request->input('is_bulk')) {
+
+            $fromNum = $request->input('case_number_from');
+            $toNum = $request->input('case_number_to');
+
+            $data = $request->except(['case_number_from', 'case_number_to']);
+            $cases = [];
+            $caseIds = [];
+            foreach(range($fromNum, $toNum) as $number) {
+
+                $caseId = config('covid.case_prefix') . str_pad($number, 3, '0', STR_PAD_LEFT);
+                $caseIds[] = $caseId;
+                $cases[] = new CovidCase(array_merge($data, [
+                    'case_identity' => strtoupper($caseId)
+                ]));
+            }
+
+            if(CovidCase::whereIn('case_identity', $caseIds)->get()->count() > 0) {
+                return redirect()->route('admin.covid-cases.create', ['bulk' => 1])->with([
+                    'errors' => new MessageBag([
+                        'case_from_number' => 'Range already exists. Unable to create.'
+                    ])
+                ]);
+            } else {
+                foreach($cases as $case) {
+                    $case->save();
+                }
+            }
+
+        } else {
+            $covidCase = CovidCase::create($request->all());
+        }
 
         return redirect()->route('admin.covid-cases.index');
 

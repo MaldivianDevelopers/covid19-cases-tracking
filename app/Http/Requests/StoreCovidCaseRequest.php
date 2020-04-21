@@ -20,8 +20,16 @@ class StoreCovidCaseRequest extends FormRequest
     public function rules()
     {
         return [
+            'case_number_from' => [
+                'required_with:is_bulk',
+                'numeric'
+            ],
+            'case_number_to' => [
+                'required_with:is_bulk',
+                'numeric'
+            ],
             'case_identity'    => [
-                'required',
+                'required_without:is_bulk',
                 'unique:covid_cases'],
             'age'              => [
                 'nullable',

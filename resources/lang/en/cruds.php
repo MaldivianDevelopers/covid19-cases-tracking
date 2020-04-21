@@ -66,13 +66,14 @@ return [
         ],
     ],
     'covidCase'      => [
-        'title'          => 'Covid Case',
+        'title'          => 'Covid Cases',
         'title_singular' => 'Covid Case',
         'fields'         => [
             'id'                        => 'ID',
             'id_helper'                 => '',
             'case_identity'             => 'Case Identity',
             'case_identity_helper'      => '',
+            'source_case_to_link'       => 'Related Source Case Identity',
             'gender'                    => 'Gender',
             'gender_helper'             => '',
             'age'                       => 'Age',
@@ -105,6 +106,10 @@ return [
             'symptomatic_date_helper'   => '',
             'displayed_symptoms'        => 'Displayed Symptoms',
             'displayed_symptoms_helper' => '',
+            'case_number_from' => 'Case number from',
+            'case_number_to' => 'Case number to',
+            'case_number_from_helper' => '',
+            'case_number_to_helper' => ''
         ],
     ],
     'auditLog'       => [

@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route("admin.covid-cases.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.covidCase.title_singular') }}
             </a>
+
+            <a class="btn btn-info" href="{{ route("admin.covid-cases.create", ['bulk' => true]) }}">
+                {{ trans('global.bulk_add') }} {{ trans('cruds.covidCase.title') }}
+            </a>
         </div>
     </div>
 @endcan

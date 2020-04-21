@@ -20,6 +20,10 @@ class UpdateCovidCaseRequest extends FormRequest
     public function rules()
     {
         return [
+            'cluster_name' => [
+              'nullable',
+              'string'
+            ],
             'case_identity'    => [
                 'required',
                 'unique:covid_cases,case_identity,' . request()->route('covid_case')->id],
@@ -39,6 +43,9 @@ class UpdateCovidCaseRequest extends FormRequest
                 'nullable'],
             'status'           => [
                 'required'],
+            'critical' => [
+                'sometimes', 'boolean'
+            ]
         ];
 
     }

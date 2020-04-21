@@ -20,6 +20,10 @@ class StoreCovidCaseRequest extends FormRequest
     public function rules()
     {
         return [
+            'cluster_name' => [
+                'nullable',
+                'string'
+            ],
             'case_number_from' => [
                 'required_with:is_bulk',
                 'numeric'
@@ -47,6 +51,9 @@ class StoreCovidCaseRequest extends FormRequest
                 'nullable'],
             'status'           => [
                 'required'],
+            'critical' => [
+                'sometimes', 'boolean'
+            ]
         ];
 
     }

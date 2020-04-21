@@ -41,6 +41,8 @@ class CovidCase extends Model
     protected $fillable = [
         'age',
         'status',
+        'critical',
+        'cluster_name',
         'gender',
         'source_id',
         'deleted_at',
@@ -56,6 +58,10 @@ class CovidCase extends Model
         'infection_source',
         'location_detected',
         'displayed_symptoms',
+    ];
+
+    protected $casts = [
+        'critical' => 'boolean'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

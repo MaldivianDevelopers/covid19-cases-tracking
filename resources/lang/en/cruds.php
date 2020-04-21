@@ -109,7 +109,11 @@ return [
             'case_number_from' => 'Case number from',
             'case_number_to' => 'Case number to',
             'case_number_from_helper' => '',
-            'case_number_to_helper' => ''
+            'case_number_to_helper' => '',
+            'critical' => 'Critical Case',
+            'critical_helper' => '',
+            'cluster_name' => 'Cluster Name',
+            'cluster_name_helper' => 'Grouped cluster name'
         ],
     ],
     'auditLog'       => [

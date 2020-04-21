@@ -49,6 +49,22 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.covidCase.fields.infection_source_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label>{{ trans('cruds.covidCase.fields.critical') }}</label>
+                <select class="form-control {{ $errors->has('critical') ? 'is-invalid' : '' }}" name="critical" id="critical">
+                    <option value="1"  {{ old('critical', $covidCase->critical) == 1 ? 'selected' : '' }}>{{ trans('global.yes') }}</option>
+                    <option value="0"  {{ old('critical', $covidCase->critical) == 0 ? 'selected' : '' }}>{{ trans('global.no') }}</option>
+                </select>
+                @if($errors->has('critical'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('critical') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.covidCase.fields.critical_helper') }}</span>
+            </div>
+
+
             <div class="form-group">
                 <label for="description">{{ trans('cruds.covidCase.fields.description') }}</label>
                 <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', $covidCase->description) }}">
@@ -59,6 +75,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.covidCase.fields.description_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label for="cluster_name">{{ trans('cruds.covidCase.fields.cluster_name') }}</label>
+                <input class="form-control {{ $errors->has('cluster_name') ? 'is-invalid' : '' }}" type="text" name="cluster_name" id="cluster_name" value="{{ old('cluster_name', $covidCase->cluster_name) }}">
+                @if($errors->has('cluster_name'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('cluster_name') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.covidCase.fields.cluster_name_helper') }}</span>
+            </div>
+
             <div class="form-group">
                 <label for="nationality">{{ trans('cruds.covidCase.fields.nationality') }}</label>
                 <input class="form-control {{ $errors->has('nationality') ? 'is-invalid' : '' }}" type="text" name="nationality" id="nationality" value="{{ old('nationality', $covidCase->nationality) }}">

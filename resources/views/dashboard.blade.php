@@ -74,9 +74,9 @@
         <div class="mt-10">
 
 
-            <div class="flex flex-row justify-center">
+            <div class="flex flex-col md:flex-row justify-center">
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg border mx-2">
+                <div class="max-w-sm rounded overflow-hidden md:shadow-lg border mx-1 my-2">
                     <div class="px-6 py-4">
                         <div class="font-bold text-sm text-gray-600 mb-2">TOTAL CASES</div>
                         <div>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg border mx-2">
+                <div class="max-w-sm rounded overflow-hidden md:shadow-lg border mx-1 my-2">
                     <div class="px-6 py-4">
                         <div class="font-bold text-sm text-gray-600 mb-2">ACTIVE CASES</div>
                         <div>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg border mx-2">
+                <div class="max-w-sm rounded overflow-hidden md:shadow-lg border mx-1 my-2">
                     <div class="px-6 py-4">
                         <div class="font-bold text-sm text-gray-600 mb-2">DECEASED</div>
                         <div>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg border mx-2">
+                <div class="max-w-sm rounded overflow-hidden md:shadow-lg border mx-1 my-2">
                     <div class="px-6 py-4">
                         <div class="font-bold text-sm text-gray-600 mb-2">RECOVERED</div>
                         <div>

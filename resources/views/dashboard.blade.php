@@ -54,6 +54,7 @@
             background-repeat: no-repeat;
         }
     </style>
+    @include('partials.analytics')
 </head>
 <body>
 <div class="py-12 bg-white">

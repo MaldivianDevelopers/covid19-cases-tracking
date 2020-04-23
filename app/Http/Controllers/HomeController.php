@@ -6,6 +6,7 @@ use App\CovidCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Fluent;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class HomeController extends Controller
 {
@@ -55,6 +56,13 @@ class HomeController extends Controller
         $summary->totalRecovered = CovidCase::where('status', 'recovered')->count();
         $summary->totalRecoveredPercentage = floatval(round(($summary->totalRecovered/$summary->totalCases)*100, 2)) . '%';
 
-        return view('dashboard', compact('summary', 'chartDailyCasesCount'));
+        $cases = $this->getCovidCases();
+
+        return view('dashboard', compact('summary', 'chartDailyCasesCount', 'cases'));
+    }
+
+    protected function getCovidCases()
+    {
+        return CovidCase::orderBy('date_detected', 'desc')->get();
     }
 }

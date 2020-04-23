@@ -8,6 +8,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    @livewireStyles
 
     <!-- Styles -->
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
@@ -127,13 +128,13 @@
                 {!! $chartDailyCasesCount->renderHtml() !!}
             </div>
 
-
-{{--            @include('reports/cases_table')--}}
+            <livewire:cases-listing-table :cases="$cases"></livewire:cases-listing-table>
 
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     {!! $chartDailyCasesCount->renderJs() !!}
+    @livewireScripts
 </div>
 </body>
 </html>

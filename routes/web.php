@@ -3,6 +3,11 @@
 Route::redirect('/', '/dashboard');
 Route::get('/dashboard', 'HomeController@dashboard');
 
+Route::group(['prefix' => 'data', 'as' => 'public.data.', 'middleware' => 'web', 'namespace' => 'Public'], function() {
+
+    Route::get('cases-list', 'CovidCasesPublicController@getListOfCases')->name('cases.list');
+});
+
 Auth::routes(['register' => false]);
 // Admin
 
